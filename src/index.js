@@ -25,9 +25,7 @@ app.post('/translate',async (req,res)=>{
   lastTime = time
   console.log({lowFrequency});
   if(lowFrequency || requestCount++ % urlLenght === 0){
-    result = await query(req.body,{
-      proxyEndpoint:'https://vercelproxy.summer9.cn/www2.deepl.com/jsonrpc'
-    })
+    result = await query(req.body)
     log(date,result.code,'http://localhost')
   }else{
     result = await request(req.body,date)
