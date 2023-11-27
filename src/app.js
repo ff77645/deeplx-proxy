@@ -1,8 +1,7 @@
 import express from "express";
 import {query} from "@ifyour/deeplx";
 import { log } from "./util.js";
-
-const PORT = 5050
+import {serverPort as PORT} from './config.js'
 
 const app = express();
 

@@ -2,8 +2,7 @@ import express from "express";
 import {query} from "@ifyour/deeplx";
 import {request} from './request.js'
 import { log } from "./util.js";
-
-const PORT = 3000;
+import {urls,localPort as PORT} from './config.js'
 
 const app = new express();
 
@@ -15,14 +14,20 @@ app.get('/',(req,res)=>{
 
 let lastTime = Date.now() 
 let requestCount = 0
+const urlLenght = urls.length + 1
+
 app.post('/translate',async (req,res)=>{
 
   let result
   const date = new Date()
-  const flag = date.getTime() - lastTime > 2000
-  lastTime = date.getTime()
-  if(flag || requestCount++ % 4 === 0){
-    result = await query(req.body)
+  const time = date.getTime()
+  const lowFrequency = time - lastTime > 5000
+  lastTime = time
+  console.log({lowFrequency});
+  if(lowFrequency || requestCount++ % urlLenght === 0){
+    result = await query(req.body,{
+      proxyEndpoint:'https://vercelproxy.summer9.cn/www2.deepl.com/jsonrpc'
+    })
     log(date,result.code,'http://localhost')
   }else{
     result = await request(req.body,date)
