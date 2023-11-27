@@ -5,8 +5,9 @@
   "type": "module",
   "main": "index.js",
   "scripts": {
-    "serve":"node ./src/app.js",
-    "dev":"nodemon ./src/index.js"
+    "dev":"nodemon ./src/index.js",
+    "start":"node ./src/index.js",
+    "serve":"node ./src/app.js"
   },
   "keywords": [],
   "author": "",

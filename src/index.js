@@ -21,9 +21,8 @@ app.post('/translate',async (req,res)=>{
   let result
   const date = new Date()
   const time = date.getTime()
-  const lowFrequency = time - lastTime > 5000
+  const lowFrequency = time - lastTime > 15000
   lastTime = time
-  console.log({lowFrequency});
   if(lowFrequency || requestCount++ % urlLenght === 0){
     result = await query(req.body)
     log(date,result.code,'http://localhost')

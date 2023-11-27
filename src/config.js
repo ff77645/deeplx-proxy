@@ -1,6 +1,8 @@
 export const urls = [
-  'https://6ftmnsghc6.us.aircode.run/translate',
+  'https://6ftmnsghc6.us.aircode.run/translate', // github
+  'https://wx1xf2qezn.us.aircode.run/translate', // google
   'https://deeplx-vercel-chi.vercel.app/translate',
+  'https://deeplx-vercel-xnzv.vercel.app/translate',
   'https://deeplxproxy.zeabur.app/translate',
   'http://summer9.cn:5050/translate',
 ]
